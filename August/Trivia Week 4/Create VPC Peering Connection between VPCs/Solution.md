@@ -11,9 +11,9 @@ The following links point to the official `gcloud` command documentation used in
 
 > ### ⚠️ Important Notice
 >
-> **English:** Ensure you use the exact names for the VPC networks, instance, project, and zone as provided by the lab environment. Typos are a common source of errors.
+> **English:** Ensure you use the exact names for the VPC networks, instance, project, and zone as provided by the lab environment resource panel.
 >
-> **Peringatan:** Pastikan Anda menggunakan nama yang tepat untuk jaringan VPC, instance, proyek, dan zona sesuai dengan yang disediakan di lingkungan lab. Kesalahan pengetikan adalah sumber galat yang umum.
+> **Peringatan:** Pastikan Anda menggunakan nama yang tepat untuk jaringan VPC, instance, proyek, dan zona sesuai dengan yang disediakan di panel resource environment lab.
 
 ---
 
