@@ -24,7 +24,7 @@ Before running the commands, replace the following placeholders with the actual 
 - `PROJECT_ID`: Your Google Cloud project ID.
 - `INSTANCE_ZONE`: The zone where your instance is located.
 - `workspace-vpc` & `private-vpc`: The names of the VPC networks you need to peer.
-
+----
 1.  **SSH into the Virtual Machine**
 
     Use this command to securely connect to your lab instance's command line.
