@@ -42,8 +42,4 @@ Before running the commands, you need to set the variables and ssh into the VM
     gcloud compute networks peerings create peering-to-workspace --network=private-vpc --peer-network=workspace-vpc
     ```
 
----
-
 ## 🎉 Congratulations, you've finished the lab! 🎊
-
----
