@@ -21,7 +21,7 @@ The following links point to the official `gcloud` command documentation used in
 ## 📝 Lab Instructions
 
 Before running the commands, you need to set the variables
-----
+
 
 1. **Define Variables** 
 
