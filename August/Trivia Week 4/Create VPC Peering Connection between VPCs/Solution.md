@@ -20,7 +20,7 @@ The following links point to the official `gcloud` command documentation used in
 ## 📝 Lab Instructions
 
 Before running the commands, you need to set the variables and ssh into the VM
-----
+
 
 1. **Define Variables & SSH into the Virtual Machine** 
 
