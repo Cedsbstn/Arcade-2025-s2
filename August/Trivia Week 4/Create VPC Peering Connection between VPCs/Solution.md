@@ -19,33 +19,26 @@ The following links point to the official `gcloud` command documentation used in
 
 ## 📝 Lab Instructions
 
-Before running the commands, replace the following placeholders with the actual values provided in your lab's details panel:
-- `INSTANCE_NAME`: The name of your virtual machine.
-- `PROJECT_ID`: Your Google Cloud project ID.
-- `INSTANCE_ZONE`: The zone where your instance is located.
-- `workspace-vpc` & `private-vpc`: The names of the VPC networks you need to peer.
+Before running the commands, you need to set the variables and ssh into the VM
 ----
-1.  **SSH into the Virtual Machine**
 
-    Use this command to securely connect to your lab instance's command line.
+1. **Define Variables & SSH into the Virtual Machine** 
+
+   Use this command to set required variables and securely connect to your lab instance's command line.
 
     ```bash
-    gcloud compute ssh INSTANCE_NAME --project=PROJECT_ID --zone=INSTANCE_ZONE
+    export ZONE=$(gcloud compute project-info describe --format="value(commonInstanceMetadata.items[google-compute-default-zone])")
+    export PROJECT_ID=$(gcloud config get-value project)
+    export VM=$(gcloud compute instances list --filter="name=workspace-vm" --format="value(name)")
+    gcloud config set project $PROJECT_ID
+    gcloud config set compute/zone "$ZONE"
+    gcloud compute ssh $VM --project=$PROJECT_ID --zone=$ZONE
     ```
 
-2.  **Create Peering from `workspace-vpc` to `private-vpc`**
-
-    This command creates a one-way peering connection from `workspace-vpc` to `private-vpc`. Note that peering is not yet bidirectional.
+2.  **After succesfully logs into SSH, You Should Create Peering from `workspace-vpc` to `private-vpc` also from `private-vpc` back to `workspace-vpc`**
 
     ```bash
     gcloud compute networks peerings create peering-to-private --network=workspace-vpc --peer-network=private-vpc
-    ```
-
-3.  **Create the Return Peering Connection**
-
-    Finally, this command establishes the peering connection from `private-vpc` back to `workspace-vpc`, allowing for bidirectional communication between the networks.
-
-    ```bash
     gcloud compute networks peerings create peering-to-workspace --network=private-vpc --peer-network=workspace-vpc
     ```
 
