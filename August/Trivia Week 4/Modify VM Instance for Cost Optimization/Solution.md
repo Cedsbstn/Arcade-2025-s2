@@ -12,35 +12,33 @@ The following links point to the official `gcloud` command documentation used in
 
 > ### ⚠️ Important Notice
 >
-> **English:** Do not change the `instance-name` or `zone` if your assigned instance is already named `lab-vm` and is located in the `us-central1-b` zone.
+> **English:** Only for educational purposes.
 >
-> **Peringatan:** Jangan ubah `instance-name` atau `zone` jika nama instance yang diberikan kepada Anda sudah `lab-vm` dan berada di zona `us-central1-b`.
+> **Peringatan:** Hanya untuk tujuan edukasi.
 
 ---
 
 ## 📝 Lab Instructions
 
-Before running the commands, you must replace `lab-vm` with the **Instance Name** provided in your lab's connection details panel. You may also need to replace the `us-central1-b` zone if a different one is specified.
+Before running the commands, you need to set the variables
+----
 
-1.  **Stop the Virtual Machine**
-    
-    This command safely shuts down the instance, which is required before changing its properties.
+1. **Define Variables** 
+
+    Use this command to set required variables
     ```bash
-    gcloud compute instances stop lab-vm --zone=us-central1-b
+    export VM_NAME=$(gcloud compute instances list --filter="name=lab-vm" --format="value(name)")
+    export ZONE=$(gcloud compute project-info describe --format="value(commonInstanceMetadata.items[google-compute-default-zone])")
+    gcloud config set compute/zone "$ZONE"
     ```
-
-2.  **Set the New Machine Type**
+   
+2.  **Stop the Virtual Machine, Set the New Machine Type, and Start the Virtual Machine**
     
-    This command resizes the stopped instance to the `e2-medium` machine type.
+    This command safely shuts down the instance, resizes the stopped instance to the `e2-medium` machine type, and starts the instance again with its new configuration.
     ```bash
-    gcloud compute instances set-machine-type lab-vm --zone=us-central1-b --machine-type=e2-medium
-    ```
-
-3.  **Start the Virtual Machine**
-    
-    Finally, this command starts the instance again with its new configuration.
-    ```bash
-    gcloud compute instances start lab-vm --zone=us-central1-b
+    gcloud compute instances stop lab-vm --zone=$ZONE
+    gcloud compute instances set-machine-type lab-vm --zone=$ZONE --machine-type=e2-medium
+    gcloud compute instances start lab-vm --zone=$ZONE
     ```
 
 ## 🎉 Congratulations, you've finished the lab! 🎊
