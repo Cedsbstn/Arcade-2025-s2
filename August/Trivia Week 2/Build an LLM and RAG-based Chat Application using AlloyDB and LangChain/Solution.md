@@ -115,4 +115,4 @@ export BASE_URL=$(gcloud  run services list --filter="(retrieval-service)" --for
 
 ### The next step you should following **Prepare Client ID** step.
 
-## 🎉 Congratulations, you've finished the lab! 🎊
+## 🎉 Congratulations, you've finished the lab!
