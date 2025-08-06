@@ -100,6 +100,8 @@ gcloud alpha run deploy retrieval-service \
     --region us-central1 \
     --network=default \
     --quiet
+```
+```bash
 curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" $(gcloud  run services list --filter="(retrieval-service)" --format="value(URL)")
 ```
 
